@@ -166,11 +166,11 @@ public class ImagePHash {
         String image1;
         String image2;
         try {
-            for (int i = 1; i < 8; i++) {
-                image1 = p.getHash(new FileInputStream(new File(filename + "example" + (i) + ".jpeg")));
-                image2 = p.getHash(new FileInputStream(new File(filename + "source.jpeg")));
-                System.out.println("example" + (i + 1) + ".jpg:source.jpg Score is " + p.distance(image1, image2));
-            }
+//            for (int i = 1; i < 8; i++) {
+                image1 = p.getHash(new FileInputStream(new File("/Users/mac_py/Desktop/cocl-n-sc.png")));
+                image2 = p.getHash(new FileInputStream(new File("/Users/mac_py/Desktop/cocl-n-s-y.png")));
+                System.out.println("example"  + ".jpg:source.jpg Score is " + p.distance(image1, image2));
+//            }
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

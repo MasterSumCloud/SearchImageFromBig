@@ -8,16 +8,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-
 import javax.imageio.ImageIO;
 
 /* 
  * 汉明距离越大表明图片差异越大，如果不相同的数据位不超过5，就说明两张图片很相似；如果大于10，就说明这是两张不同的图片。
  */
 public class ImagePHash {
-
-    // 项目根目录路径
-    public static final String path = System.getProperty("user.dir");
     private int size = 32;
     private int smallerSize = 8;
 
@@ -159,18 +155,13 @@ public class ImagePHash {
     }
 
     public static void main(String[] args) {
-
-        // 项目根目录路径
-        String filename = ImagePHash.path + "/images/";
         ImagePHash p = new ImagePHash();
         String image1;
         String image2;
         try {
-//            for (int i = 1; i < 8; i++) {
                 image1 = p.getHash(new FileInputStream(new File("/Users/mac_py/Desktop/cocl-n-sc.png")));
                 image2 = p.getHash(new FileInputStream(new File("/Users/mac_py/Desktop/cocl-n-s-y.png")));
-                System.out.println("example"  + ".jpg:source.jpg Score is " + p.distance(image1, image2));
-//            }
+                System.out.println("得分为 " + p.distance(image1, image2));
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

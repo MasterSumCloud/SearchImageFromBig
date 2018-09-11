@@ -10,12 +10,17 @@ import javax.imageio.ImageIO;
  *
  */
 public class SearchPixelPosition {
-
-	private int targetX;
-	private int targetY;
+	//需要找的图片宽度
 	private int targetWidth;
+	//需要找的图片高度
 	private int targetHeight;
 
+	/**
+	 * 对大图进行所有像素点寻找，知道满足5个点，返回之后到的坐标值
+	 * @param path
+	 * @param tagert
+	 * @return
+	 */
 	public ResultBean getAllRGB(String path, String tagert) {
 		// int[] rgb = new int[3];
 		File file = new File(path);
@@ -52,6 +57,8 @@ public class SearchPixelPosition {
 				// rgb[0] = (pixel & 0xff0000) >> 16;
 				// rgb[1] = (pixel & 0xff00) >> 8;
 				// rgb[2] = (pixel & 0xff);
+				
+				//依次对比5个点。
 				if (setTarget5RGB != null) {
 					PositionBean p1 = setTarget5RGB.get(0);
 					if (pixel == p1.pxrgb) {
@@ -92,7 +99,7 @@ public class SearchPixelPosition {
 			}
 		}
 		long end = System.currentTimeMillis();
-		System.out.println("总耗时：" + (end - start));
+		System.out.println("搜索坐标耗时：" + (end - start));
 		return null;
 	}
 
@@ -140,6 +147,11 @@ public class SearchPixelPosition {
 		return searchXYList;
 	}
 
+	/**
+	 * 设置5个点的像素值 和对应的坐标
+	 * @param src
+	 * @return
+	 */
 	private ArrayList<PositionBean> setTarget5RGB(String src) {
 		File file = new File(src);
 		BufferedImage bi = null;

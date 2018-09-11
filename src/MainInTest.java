@@ -6,6 +6,7 @@ public class MainInTest {
 		String src = "/Users/mac_py/Desktop/cocl.png";
 		String dest = "/Users/mac_py/Desktop/cocl-n-y.png";
 		String target = "/Users/mac_py/Desktop/cocl-n.png";
+		long start = System.currentTimeMillis();
 		try {
 			// ScalImage.zoomImage(src, dest,320,180);
 			// SnippingImage.saveImageWithSize(568,850,240,106,src,"/Users/mac_py/Desktop/cocl-n.png");
@@ -21,11 +22,13 @@ public class MainInTest {
 				System.out.println("进行相似度计算");
 				String image1 = p.getHash(new FileInputStream(new File(target)));
 				String image2 = p.getHash(new FileInputStream(new File("/Users/mac_py/Desktop/cocl-ai.png")));
-				System.out.println("相似度为" + p.distance(image1, image2));
+				System.out.println("相似度为" + (p.distance(image1, image2)==0?"相似度100%":"不相似"));
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		long end = System.currentTimeMillis();
+		System.out.println("总共耗时：" + (end - start));
 	}
 }
